@@ -12,6 +12,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     environment: npm
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     permissions:
       contents: read
       id-token: write
@@ -34,11 +36,11 @@ jobs:
         run: npm run verify
 
       - name: Publish with trusted publishing
-        if: ${{ secrets.NPM_TOKEN == '' }}
+        if: ${{ env.NPM_TOKEN == '' }}
         run: npm publish --access public
 
       - name: Publish with token fallback
-        if: ${{ secrets.NPM_TOKEN != '' }}
+        if: ${{ env.NPM_TOKEN != '' }}
         run: npm publish --provenance --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
