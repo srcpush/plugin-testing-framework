@@ -1,0 +1,27 @@
+name: Bug report
+description: Report a reproducible bug in the framework.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the problem and the expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include commands, configuration, and test setup.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Node.js, npm, OS, Android/iOS tooling, CI provider, and package versions.
+    validations:
+      required: true

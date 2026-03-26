@@ -1,0 +1,109 @@
+{
+  "name": "@srcpush/plugin-testing-framework",
+  "version": "0.1.0",
+  "description": "Testing framework for CodePush-compatible plugins, with helpers for Mocha, mock servers, and mobile emulator orchestration.",
+  "keywords": [
+    "code-push",
+    "react-native",
+    "testing",
+    "framework",
+    "mocha",
+    "android",
+    "ios"
+  ],
+  "homepage": "https://github.com/srcpush/plugin-testing-framework#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srcpush/plugin-testing-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/srcpush/plugin-testing-framework/issues"
+  },
+  "license": "MIT",
+  "author": "srcpush",
+  "main": "./dist/script/index.js",
+  "types": "./dist/script/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/script/index.d.ts",
+      "require": "./dist/script/index.js",
+      "default": "./dist/script/index.js"
+    },
+    "./script/index": {
+      "types": "./dist/script/index.d.ts",
+      "require": "./dist/script/index.js",
+      "default": "./dist/script/index.js"
+    },
+    "./script/platform": {
+      "types": "./dist/script/platform.d.ts",
+      "require": "./dist/script/platform.js",
+      "default": "./dist/script/platform.js"
+    },
+    "./script/projectManager": {
+      "types": "./dist/script/projectManager.d.ts",
+      "require": "./dist/script/projectManager.js",
+      "default": "./dist/script/projectManager.js"
+    },
+    "./script/serverUtil": {
+      "types": "./dist/script/serverUtil.d.ts",
+      "require": "./dist/script/serverUtil.js",
+      "default": "./dist/script/serverUtil.js"
+    },
+    "./script/test": {
+      "types": "./dist/script/test.d.ts",
+      "require": "./dist/script/test.js",
+      "default": "./dist/script/test.js"
+    },
+    "./script/testBuilder": {
+      "types": "./dist/script/testBuilder.d.ts",
+      "require": "./dist/script/testBuilder.js",
+      "default": "./dist/script/testBuilder.js"
+    },
+    "./script/testConfig": {
+      "types": "./dist/script/testConfig.d.ts",
+      "require": "./dist/script/testConfig.js",
+      "default": "./dist/script/testConfig.js"
+    },
+    "./script/testUtil": {
+      "types": "./dist/script/testUtil.d.ts",
+      "require": "./dist/script/testUtil.js",
+      "default": "./dist/script/testUtil.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "test/template",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "pack:check": "npm pack --dry-run",
+    "verify": "npm run typecheck && npm run build && npm run pack:check",
+    "test": "npm run verify",
+    "prepublishOnly": "npm run verify"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.3",
+    "@types/express": "^5.0.3",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.3"
+  }
+}
